@@ -25,7 +25,7 @@
 .mdl-grid {
   display: flex;
   flex-flow: row wrap;
-  margin: 0 auto 0 auto;
+  margin: 1px auto 0 auto;
   align-items: stretch;
 
   &.mdl-grid--no-spacing {
@@ -226,6 +226,47 @@
     .mdl-cell--#{$i}-offset,
     .mdl-cell--#{$i}-offset-desktop.mdl-cell--#{$i}-offset-desktop {
       @include offset-size($i, $grid-desktop-columns, $grid-desktop-gutter);
+    }
+  }
+}
+
+////////// Wide //////////
+
+@media (min-width: $grid-wide-breakpoint) {
+  .mdl-grid {
+    padding: $grid-wide-margin - ($grid-wide-gutter / 2);
+  }
+
+  .mdl-cell {
+    margin: $grid-wide-gutter / 2;
+    @include partial-size($grid-cell-default-columns, $grid-wide-columns,
+            $grid-wide-gutter);
+  }
+
+  .mdl-cell--hide-wide {
+    display: none !important;
+  }
+
+  // Define order override classes.
+  @for $i from 1 through $grid-max-columns {
+    .mdl-cell--order-#{$i}-wide.mdl-cell--order-#{$i}-wide {
+      order: $i;
+    }
+  }
+
+  // Define partial sizes for all numbers of columns.
+  @for $i from 1 through $grid-wide-columns {
+    .mdl-cell--#{$i}-col,
+    .mdl-cell--#{$i}-col-wide.mdl-cell--#{$i}-col-wide {
+      @include partial-size($i, $grid-wide-columns, $grid-wide-gutter);
+    }
+  }
+
+  // Define valid wide offsets.
+  @for $i from 1 through ($grid-wide-columns - 1) {
+    .mdl-cell--#{$i}-offset,
+    .mdl-cell--#{$i}-offset-wide.mdl-cell--#{$i}-offset-wide {
+      @include offset-size($i, $grid-wide-columns, $grid-wide-gutter);
     }
   }
 }

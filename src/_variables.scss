@@ -521,6 +521,12 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 
 /* GRID */
 
+$grid-wide-columns: 12 !default;
+$grid-wide-gutter: 16px !default;
+$grid-wide-margin: 16px !default;
+
+$grid-wide-breakpoint: 1200px !default;
+
 $grid-desktop-columns: 12 !default;
 $grid-desktop-gutter: 16px !default;
 $grid-desktop-margin: 16px !default;
