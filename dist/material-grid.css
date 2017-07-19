@@ -367,7 +367,7 @@
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  margin: 1px auto 0 auto;
+  margin: 0 auto 0 auto;
   -webkit-align-items: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
@@ -981,7 +981,7 @@
     .mdl-cell--11-offset-desktop.mdl-cell--11-offset-desktop {
       margin-left: 91.6666666667%; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1200px) {
   .mdl-grid {
     padding: 8px; }
   .mdl-cell {
