@@ -169,8 +169,6 @@ gulp.task('styletemplates', () => {
 gulp.task('styles', () => {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src('src/material-design-lite.scss')
-    // Generate Source Maps
-    .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10,
       onError: console.error.bind(console, 'Sass error:')
@@ -186,7 +184,6 @@ gulp.task('styles', () => {
     .pipe($.if('*.css', $.csso()))
     .pipe($.concat('material.min.css'))
     .pipe($.header(banner, {pkg}))
-    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'styles'}));
 });
@@ -234,7 +231,6 @@ gulp.task('closure', () => {
 gulp.task('scripts', ['lint'], () => {
   return gulp.src(SOURCES)
     .pipe($.if(/mdlComponentHandler\.js/, $.util.noop(), uniffe()))
-    .pipe($.sourcemaps.init())
     // Concatenate Scripts
     .pipe($.concat('material.js'))
     .pipe($.iife({useStrict: true}))
@@ -242,12 +238,9 @@ gulp.task('scripts', ['lint'], () => {
     // Minify Scripts
     .pipe($.uglify({
       sourceRoot: '.',
-      sourceMapIncludeSources: true
     }))
     .pipe($.header(banner, {pkg}))
     .pipe($.concat('material.min.js'))
-    // Write Source Maps
-    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'scripts'}));
 });
